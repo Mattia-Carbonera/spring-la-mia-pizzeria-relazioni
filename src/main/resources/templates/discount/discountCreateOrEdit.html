@@ -27,18 +27,22 @@
     <main>
       <div class="page-title">
         <h1>Nuova offerta</h1>
-        <h2>Aggiungi nuova offerta a [[${discount.pizza}]]</h2>
+        <h2 th:if="${edit} == true">
+          Modifica offerta a [[${discount.pizza}]]
+        </h2>
+        <h2 th:if="${edit} == false">
+          Aggiungi nuova offerta a [[${discount.pizza}]]
+        </h2>
       </div>
 
+      <!-- th:action="@{/discount/create}" -->
       <form
         th:object="${discount}"
         id="discount-form"
-        th:action="@{/discount/create}"
+        th:action="${edit} == true ? @{/discount/} + ${discount.id} + @{/edit-discount} : @{/discount/create}"
         method="post"
       >
-        <!-- ??? -->
-        <!-- <input type="hidden" value="*{pizza}" /> -->
-        <input type="hidden" th:field="*{pizza.id}" />
+        <input type="hidden" th:field="*{pizza}" />
 
         <div class="form-pizza form-pizza-name">
           <label for="title">Nome dello sconto: </label>
@@ -101,7 +105,7 @@
         <div class="line"></div>
 
         <div class="confimr-btn-container">
-          <button type="submit" class="confirm-add-btn">Aggiungi</button>
+          <button type="submit" class="confirm-add-btn">Conferma</button>
           <button type="reset" class="cancel-add-btn">Annulla</button>
         </div>
       </form>

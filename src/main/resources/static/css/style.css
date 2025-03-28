@@ -330,6 +330,24 @@ footer {
   margin-bottom: 2rem;
 }
 
+.discount-ul-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.discount-ul-container ul {
+  margin: 1.5rem;
+}
+
+.discount-ul-container a {
+  color: black;
+}
+
+.discount-ul-container li {
+  list-style: none;
+}
+
 .create-offer-btn {
   cursor: pointer;
   padding: 0.4rem 0.7rem;
