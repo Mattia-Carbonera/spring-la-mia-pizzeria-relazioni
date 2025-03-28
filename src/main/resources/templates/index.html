@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- * Fontawesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://mvnrepository.com/artifact/org.webjars/font-awesome}"
+    />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <main>
+      <div class="img-background-container">
+        <img th:src="@{/img/background-home-page.jpg}" alt="" />
+      </div>
+
+      <div class="logo-container">
+        <img th:src="@{img/pizza-logo.jpg}" alt="" />
+      </div>
+
+      <a href="#breack-point" class="arrow-btn">
+        <i class="fa-solid fa-arrow-down"></i>
+      </a>
+
+      <div class="home-page-content-container" id="breack-point">
+        <h1>La nostra pizzeria</h1>
+
+        <div class="presetation-section">
+          <div class="presentation-backgrownd">
+            <section class="left-presentation">
+              <div class="presentation-img-container">
+                <img th:src="@{img/verdura.jpg}" alt="" />
+              </div>
+              <div class="content-presentation">
+                <h2>Qualità</h2>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam
+                  quaerat, sequi quia nostrum fugit itaque soluta iusto nesciunt
+                  placeat non, nemo architecto aliquid est quidem eius eligendi
+                  neque libero adipisci.
+                </p>
+              </div>
+            </section>
+
+            <section class="right-presentation">
+              <div class="presentation-img-container">
+                <img th:src="@{img/pizzaiolo.jpg}" alt="" />
+              </div>
+              <div class="content-presentation">
+                <h2>Passione</h2>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam
+                  quaerat, sequi quia nostrum fugit itaque soluta iusto nesciunt
+                  placeat non, nemo architecto aliquid est quidem eius eligendi
+                  neque libero adipisci.
+                </p>
+              </div>
+            </section>
+
+            <section class="left-presentation" id="pro">
+              <div class="presentation-img-container">
+                <img th:src="@{img/grano.webp}" alt="" />
+              </div>
+              <div class="content-presentation">
+                <h2>Chi siamo</h2>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam
+                  quaerat, sequi quia nostrum fugit itaque soluta iusto nesciunt
+                  placeat non, nemo architecto aliquid est quidem eius eligendi
+                  neque libero adipisci.
+                </p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

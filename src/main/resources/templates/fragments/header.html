@@ -1,0 +1,21 @@
+<header class="navbar" th:fragment="navbar">
+  <div class="header-container">
+    <div class="header-img-container">
+      <img th:src="@{/img/pizza-logo.jpg}" alt="" />
+    </div>
+
+    <div class="nav-link">
+      <ul>
+        <li>
+          <a th:href="@{http://localhost:8080/}">Home</a>
+        </li>
+        <li>
+          <a th:href="@{http://localhost:8080/menu}">Menu</a>
+        </li>
+        <li>
+          <a th:href="@{http://localhost:8080/about}">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

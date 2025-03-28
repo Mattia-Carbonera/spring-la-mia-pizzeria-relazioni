@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Pizza</title>
+  </head>
+  <body>
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <main>
+      <div class="page-title">
+        <h1>Pizza [[${pizza}]]</h1>
+      </div>
+      <div class="show-page-container">
+        <div class="show-img-container">
+          <img
+            th:if="${pizza.image != null}"
+            th:src="@{/img/pizze-img/} + ${pizza.image}"
+            alt=""
+          />
+
+          <img
+            th:unless="${pizza.image != null}"
+            th:src="@{/img/placeholder-img.jpg}"
+            alt=""
+          />
+        </div>
+
+        <div class="show-page-content">
+          <div class="ingredients">
+            <span class="pizza-bold">Ingredienti: </span>
+            <p>[[${pizza.getDescription()}]]</p>
+          </div>
+          <div class="price">
+            <span class="pizza-bold">[[${pizza.getPrice()}]]</span>
+            <span class="pizza-bold"> €</span>
+          </div>
+        </div>
+
+        <div class="discount-pizzas-container">
+          <div th:if="${pizza.getDiscount()}">
+            <ul
+              th:each="discount : ${pizza.getDiscount()}"
+              class="pizzas-discounts"
+            >
+              <h3>[[${discount.title}]]</h3>
+              <li>Data di inizio: [[${discount.startingDate}]]</li>
+              <li>Data di fine: [[${discount.finishDate}]]</li>
+            </ul>
+          </div>
+
+          <div
+            class="no-pizzas-discounts-container"
+            th:unless="${pizza.getDiscount()}"
+          >
+            <span>Non sono presenti offerte per questa pizza</span>
+          </div>
+        </div>
+
+        <div class="create-offer-btn-container">
+          <a th:href="@{/menu/} + ${pizza.id} + @{/create-discount}" href="">
+            <button class="create-offer-btn">Crea offerta</button>
+          </a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

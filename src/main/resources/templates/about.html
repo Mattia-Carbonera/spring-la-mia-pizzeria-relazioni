@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- * Fontawesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://mvnrepository.com/artifact/org.webjars/font-awesome}"
+    />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <main>
+      <div class="about-container">
+        <div class="about-left">
+          <ul>
+            <li>
+              <span>Email: </span>
+              <a href="mailto:pizzeria@gmail.com">pizzeria@gmail.com</a>
+            </li>
+            <li>
+              <span>Telefono: </span>
+              <a href="tel:3924683538">392 4683538</a>
+            </li>
+            <li>
+              <span>Indirizzo: </span>
+              <a href="https://maps.app.goo.gl/5rTwGhB9v1oGnJYt8">posizione </a>
+            </li>
+          </ul>
+        </div>
+        <div class="about-line"></div>
+        <div class="about-right">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum totam
+            id, sapiente porro reprehenderit, libero, quo expedita nihil quis
+            voluptatem molestiae omnis ratione officiis suscipit eos deleniti
+            officia quae velit.
+          </p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ipsam
+          est natus velit! Cupiditate et eveniet, officiis quod nostrum libero
+          porro quibusdam quia. Velit temporibus dolores, doloribus nostrum
+          aliquam repellat?
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

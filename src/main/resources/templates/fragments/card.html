@@ -1,0 +1,61 @@
+<div class="card-padding" th:fragment="pizzasCard(item)">
+  <div class="card">
+    <a th:href="@{http://localhost:8080/menu/} + ${item.id}">
+      <div class="card-img">
+        <img
+          th:if="${item.image != null}"
+          th:src="@{/img/pizze-img/} + ${item.image}"
+          alt=""
+        />
+        <img
+          th:unless="${pizza.image != null}"
+          th:src="@{/img/placeholder-img.jpg}"
+          alt=""
+        />
+      </div>
+
+      <div class="card-body">
+        <h3 th:text="${item}"></h3>
+      </div>
+    </a>
+
+    <div class="flex-grow"></div>
+  </div>
+
+  <div class="action-btn-container">
+    <a th:href="@{/menu/edit-pizza/} + ${item.id}">
+      <div class="edit-btn-container">
+        <i class="fa-solid fa-pen-to-square card-edit-btn"></i>
+      </div>
+    </a>
+
+    <div
+      th:onclick="'document.getElementById(\'box-' + ${item.id} + '\').style.display=\'block\''"
+      class="delete-btn-container"
+      id="delete-btn-container"
+    >
+      <span class="fa-solid fa-trash card-delete-btn" id="prova"></span>
+    </div>
+  </div>
+
+  <div class="modal-prova w3-modal" th:id="'box-' + ${item.id}">
+    <div class="w3-modal-content"></div>
+
+    <h3>Vuoi eliminare definitivamente [[${pizza}]]?</h3>
+    <div class="btn-delete-container">
+      <form
+        class="delete-btn-container"
+        method="post"
+        th:action="@{/menu/delete/{id}(id=${item.id})}"
+      >
+        <button class="btn-modal-delete">Elimina</button>
+      </form>
+      <button
+        th:onclick="'document.getElementById(\'box-' + ${item.id} + '\').style.display=\'none\''"
+        class="btn-modal-cancel"
+      >
+        Annulla
+      </button>
+    </div>
+  </div>
+</div>

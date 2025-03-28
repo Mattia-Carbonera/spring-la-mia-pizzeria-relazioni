@@ -1,0 +1,647 @@
+/* * GENERAL */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: fantasy;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.container {
+  margin-bottom: 4rem;
+}
+
+.page-title {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.pizza-bold {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+main {
+  text-align: center;
+  position: relative;
+  animation-name: opacity;
+  animation-duration: 1s;
+  margin-top: 96px;
+  /* min-height: 100%; */
+  min-height: calc(100vh - 96px - 50px) !important;
+}
+
+.inline-img {
+  display: inline;
+}
+
+/* * FRAGMENT */
+/* header */
+header {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 2;
+}
+
+.header-container {
+  background-color: #fdce92;
+  height: 6rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 2rem;
+}
+
+.header-img-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-img-container img {
+  height: 90%;
+}
+
+.nav-link ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-link li {
+  cursor: pointer;
+  list-style: none;
+
+  margin: 0 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.nav-link a {
+  color: black;
+  text-decoration: none;
+}
+
+/* CARD */
+.card {
+  position: relative;
+
+  width: 10rem;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 10px;
+
+  text-align: center;
+}
+
+.card-container {
+  animation-name: scale-card;
+  animation-duration: 1s;
+}
+
+.card a {
+  text-decoration: none;
+  color: black;
+}
+
+.card-padding {
+  position: relative;
+  padding: 1.5rem;
+  height: 100%;
+}
+
+.card:hover {
+  opacity: 0.5;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.card h3 {
+  margin: 1rem;
+}
+
+.card-img img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 7px 7px 0 0;
+}
+
+.action-btn-container {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 65px;
+
+  padding: 0 0.5rem;
+
+  background-color: white;
+}
+
+.action-btn-container a {
+  color: black;
+}
+
+.card-edit-btn {
+  padding: 0.3rem;
+  background-color: lightblue;
+  border-radius: 5px;
+
+  margin-right: 0.8rem;
+}
+
+.card-delete-btn {
+  border: none;
+  padding: 0.4rem;
+  background-color: red;
+  border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+  background-color: lightgray;
+  height: 50px;
+}
+
+/* * HOME */
+
+.img-background-container {
+  z-index: -1;
+  position: fixed;
+  top: 2rem;
+  width: 100%;
+}
+.img-background-container img {
+  width: 100%;
+}
+
+.logo-container {
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 35rem;
+}
+
+.logo-container img {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.home-page-content-container {
+  background-color: rgba(230, 230, 230, 0.8);
+  /* margin-top: calc(100vh - 96px); */
+  margin: 7rem;
+  padding-top: 2rem;
+  text-align: center;
+  border-radius: 15px;
+  z-index: 1;
+}
+
+.presetation-section {
+  padding-bottom: 0.5rem;
+}
+
+.presetation-section section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin: 4rem;
+
+  background-color: #ffead1;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  box-shadow: 4px 6px 25px black;
+}
+
+.right-presentation {
+  flex-direction: row-reverse;
+}
+
+.content-presentation {
+  padding: 0 5rem;
+}
+
+.presentation-img-container {
+  height: 15rem;
+}
+
+.presentation-img-container img {
+  height: 100%;
+  margin: 0 3rem;
+  border-radius: 10px;
+}
+
+.presentation-backgrownd {
+  /* background-color: #ffead1; */
+  /* margin: 0 2rem; */
+  /* border-radius: 15px; */
+}
+
+/* .logo-container {
+  animation-name: image-rotator;
+  animation-duration: 1s;
+} */
+
+.arrow-btn {
+  display: inline-block;
+  margin: auto;
+  margin-top: 2rem;
+
+  animation-iteration-count: infinite;
+  animation-name: sizing;
+  animation-duration: 1s;
+}
+
+.arrow-btn i {
+  font-size: 4rem;
+  color: #fdce92;
+}
+
+/* * INDEX */
+.no-pizzas-container {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.no-pizzas {
+  font-size: 2rem;
+  font-weight: bold;
+  color: lightgray;
+}
+
+.card-layout {
+  max-width: 70%;
+  margin: auto;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: center;
+}
+
+.search-btn {
+  cursor: pointer;
+  height: 4rem;
+  aspect-ratio: 1;
+
+  position: absolute;
+  top: 0rem;
+  left: 2rem;
+}
+
+.search-btn img {
+  height: 100%;
+  width: 100%;
+}
+
+.add-pizza-container {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+
+  display: flex;
+
+  height: 3rem;
+}
+
+.add-pizza-container img {
+  height: 100%;
+  width: 100%;
+}
+
+/* discount show */
+.pizzas-discounts {
+  margin: 2rem 0;
+}
+
+.no-pizzas-discounts-container {
+  margin-bottom: 2rem;
+}
+
+.create-offer-btn {
+  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+  background-color: #fdce92;
+  margin-bottom: 2rem;
+}
+
+/* * SHOW */
+.show-img-container {
+  display: flex;
+  justify-content: center;
+}
+
+.show-img-container img {
+  border-radius: 15px;
+  max-width: 40%;
+}
+
+.show-page-content * {
+  margin: 1rem 0;
+}
+
+.show-page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin: auto;
+}
+
+/* * CREATE PIZZA */
+#pizza-form,
+#discount-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pizza-form .error,
+#discount-form .error {
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 0.2rem 1rem;
+  padding-left: 1.5rem;
+  border-radius: 10px;
+}
+
+#pizza-form .line,
+#discount-form .line {
+  width: 12rem;
+  height: 2px;
+  background-color: #fdce92;
+  margin: 0.5rem 0;
+}
+
+.form-pizza {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.form-pizza label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-pizza input,
+.form-pizza textarea {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+
+  border: 2px solid #fdce92;
+  border-radius: 15px;
+  background-color: beige;
+}
+
+.confimr-btn-container button {
+  cursor: pointer;
+  padding: 0.4rem 0.7rem;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.confimr-btn-container .confirm-add-btn {
+  background-color: #fdce92;
+}
+
+.confimr-btn-container .cancel-add-btn {
+  background-color: lightgray;
+}
+
+/* * ABOUT ? */
+.about-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: calc(100vh - 96px - 50px);
+}
+
+.about-right {
+  width: 50%;
+}
+
+.about-left li {
+  margin: 2rem 0;
+  list-style: none;
+}
+
+.about-line {
+  height: 20rem;
+  width: 1px;
+  background-color: gray;
+}
+
+#search {
+  cursor: pointer;
+  right: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+
+  margin-left: 1rem;
+}
+
+#search img {
+  height: 100%;
+}
+
+#modal {
+  position: absolute;
+  top: 8rem;
+  left: 0;
+  height: 5rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 1.5rem;
+  text-align: center;
+}
+
+#modal * {
+  margin: 0.3rem 0;
+}
+
+#modal input {
+  border-radius: 10px;
+  border: 2px solid lightblue;
+  padding: 0.5rem;
+}
+
+#modal button {
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: #fdce92;
+  padding: 0.5rem;
+  border-radius: 15px;
+}
+
+/* delete item modal */
+#modal-delete-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  width: 100px;
+  background-color: rgba(255, 255, 255, 0.6);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-confermation-delete {
+  height: 20rem;
+  width: 30rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+
+  padding: 2rem;
+  text-align: center;
+}
+
+.modal-confermation-delete h3 {
+  margin-bottom: 1rem;
+}
+
+.btn-modal-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+
+  margin-top: 5rem;
+}
+
+.conferm-btn {
+  padding: 1rem 2rem;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+
+.close-modal {
+  padding: 1rem 2rem;
+  background-color: lightgrey;
+  border-radius: 10px;
+  margin: 0 1rem;
+}
+
+.prova-modal {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* prova modal interna */
+
+.modal-prova.w3-modal {
+  display: none;
+}
+
+.modal-prova {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
+
+  text-align: center;
+}
+
+.btn-delete-container {
+  padding-top: 3rem;
+}
+
+.btn-delete-container button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem;
+}
+
+.btn-modal-delete {
+  background-color: rgba(255, 0, 0, 1);
+  margin-bottom: 0.5rem;
+}
+
+.btn-modal-cancel {
+  background-color: lightgrey;
+}
+
+/* * ANIMATION */
+/* main */
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sizing {
+  0% {
+    padding: 0 0 3rem 0;
+  }
+  50% {
+    padding: 3rem 0 0 0;
+  }
+  100% {
+    padding: 0 0 3rem 0;
+  }
+}
+
+@keyframes image-rotator {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes scale-card {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

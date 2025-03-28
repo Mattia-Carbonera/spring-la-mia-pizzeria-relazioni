@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <title>Pizzeria</title>
+  </head>
+  <body>
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <main>
+      <div class="page-title">
+        <h1>Nuova pizza</h1>
+      </div>
+
+      <form
+        id="pizza-form"
+        th:action="@{/menu/create-pizza}"
+        method="post"
+        th:object="${pizza}"
+      >
+        <div class="form-pizza form-pizza-name">
+          <label for="name">Nome della pizza: </label>
+          <input
+            type="text"
+            id="name"
+            th:field="*{name}"
+            th:errorClass="is-invalid"
+          />
+        </div>
+        <div th:if="${#fields.hasErrors('name')}" class="error">
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('name')}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+        <div class="line"></div>
+
+        <div class="form-pizza form-pizza-image">
+          <label for="image">Immagine: </label>
+          <input type="text" id="image" th:field="*{image}" value="null" />
+        </div>
+        <div th:if="${#fields.hasErrors('image')}" class="error">
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('image')}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+        <div class="line"></div>
+
+        <div class="form-pizza form-pizza-price">
+          <label for="price">Prezzo: </label>
+          <input type="number" min="0" id="price" th:field="*{price}" />
+        </div>
+        <div th:if="${#fields.hasErrors('price')}" class="error">
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('price')}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+        <div class="line"></div>
+
+        <div class="form-pizza form-pizza-description">
+          <label for="description">Descrizione: </label>
+          <textarea type="text" id="description" th:field="*{description}" />
+        </div>
+        <div th:if="${#fields.hasErrors('description')}" class="error">
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('description')}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+
+        <div class="confimr-btn-container">
+          <button type="submit" class="confirm-add-btn">Aggiungi</button>
+          <button type="reset" class="cancel-add-btn">Annulla</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
