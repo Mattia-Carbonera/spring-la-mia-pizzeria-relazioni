@@ -1,0 +1,28 @@
+<div
+  class="discount-ul-container"
+  th:if="${pizza.getDiscount()}"
+  th:fragment="discount-card(item)"
+>
+  <ul th:each="discount : ${item.getDiscount()}" class="pizzas-discounts">
+    <a
+      th:href="@{/discount/} + ${discount.getId()}"
+      class="pizza-discounts-link"
+    >
+      <li>
+        <h3>[[${discount.title}]]</h3>
+      </li>
+      <li>Data di inizio: [[${discount.startingDate}]]</li>
+      <li>Data di fine: [[${discount.finishDate}]]</li>
+
+      <!-- Edit -->
+      <a
+        th:href="@{/discount/} + ${discount.getId()} + @{/edit-discount}"
+        class="pizza-discounts-link"
+      >
+        <div class="discount-item-modify">
+          <i class="fa-solid fa-pen-to-square card-edit-btn"></i>
+        </div>
+      </a>
+    </a>
+  </ul>
+</div>

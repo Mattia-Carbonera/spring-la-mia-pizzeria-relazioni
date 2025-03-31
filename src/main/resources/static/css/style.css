@@ -361,6 +361,49 @@ footer {
   margin-bottom: 2rem;
 }
 
+.discount-item-modify {
+  display: inline-block;
+}
+
+/* * DISCOUNT SHOW PAGE */
+.discount-show-container {
+  padding: 2rem;
+}
+
+.discount-show-container h2 {
+  margin-top: 2rem;
+}
+
+.discount-show-container h1 {
+  margin: 2rem 0;
+}
+
+.show-discount-date-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.show-discount-list-container {
+  margin: 2rem;
+}
+
+.show-discount-list-container li {
+  list-style: none;
+}
+
+.pizzas-discounts {
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: 2px 2px 3px 3px gray;
+}
+
+.pizza-discounts-link {
+  text-decoration: none;
+}
+
 /* * SHOW */
 .show-img-container {
   display: flex;

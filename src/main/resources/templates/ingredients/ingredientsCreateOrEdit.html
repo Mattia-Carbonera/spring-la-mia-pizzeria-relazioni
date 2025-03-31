@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    <!-- <link
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css}"
+    /> -->
+    <!-- * Fontawesome -->
+    <th:block th:replace="fragments/headerLink :: fontawesome"></th:block>
+    <title>Menù</title>
+  </head>
+  <body>
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+
+    <main>
+      <div class="page-title">
+        <h1>Nuovo ingrediente</h1>
+        <h2 th:if="${edit} == true">Modifica [[${ingredient.name}]]</h2>
+        <h2 th:if="${edit} == false">Aggiungi nuovo ingrediente</h2>
+      </div>
+
+      <form
+        th:object="${ingredient}"
+        id="ingredient-form"
+        th:action="${edit} == true ? @{/ingredient/} + ${ingredient.id} + @{/edit-ingredient} : @{/ingredient/create}"
+        method="post"
+      >
+        <input type="hidden" th:field="${ingredient}" />
+
+        <div class="form-pizza form-pizza-name">
+          <label for="name">Nome ingrediente: </label>
+          <input
+            type="text"
+            id="name"
+            th:field="*{name}"
+            th:errorClass="is-invalid"
+          />
+        </div>
+        <div th:if="${#fields.hasErrors('name')}" class="error">
+          <ul>
+            <li
+              th:each="error : ${#fields.errors('name')}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+
+        <div class="confimr-btn-container">
+          <button type="submit" class="confirm-add-btn">Conferma</button>
+          <button type="reset" class="cancel-add-btn">Annulla</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -26,6 +24,14 @@ public class discountController {
 
     @Autowired
     private DiscountRepository discountRepository;
+
+    @GetMapping("/{id}")
+    public String getMethodName(@PathVariable Integer id, Model model) {
+        model.addAttribute("discount", discountRepository.findById(id).get());
+
+        return new String("discount/discountShow");
+    }
+    
 
 
     // Create
