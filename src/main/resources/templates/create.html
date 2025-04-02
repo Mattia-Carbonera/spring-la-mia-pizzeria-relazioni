@@ -80,6 +80,35 @@
             ></li>
           </ul>
         </div>
+        <button id="modal-category-btn" type="button">
+          Seleziona categorie
+        </button>
+
+        <!-- modal -->
+        <div id="category-modal-container" class="d-none">
+          <div class="category-modal">
+            <h4>Seleziona gli ingredienti</h4>
+
+            <div
+              th:each="ingredient : ${ingredients}"
+              class="form-category check"
+            >
+              <label for="|ingredient-${ingredient.id}|"
+                >[[${ingredient.name}]]</label
+              >
+              <input
+                type="checkbox"
+                th:id="|ingredient-${ingredient.id}|"
+                th:field="${pizza.ingredients}"
+                th:value="${ingredient.id}"
+              />
+            </div>
+
+            <button type="button" id="category-modal-btn-close">
+              Aggiungi
+            </button>
+          </div>
+        </div>
 
         <div class="confimr-btn-container">
           <button type="submit" class="confirm-add-btn">Aggiungi</button>
@@ -89,3 +118,24 @@
     </main>
   </body>
 </html>
+
+<!-- ! javascript -->
+<script th:inline="javascript">
+  let categoryModal = document.getElementById("category-modal-container");
+  let modalCategoryBtn = document.getElementById("modal-category-btn");
+  let categoryModalBtnClose = document.getElementById(
+    "category-modal-btn-close"
+  );
+
+  modalCategoryBtn.addEventListener("click", (e) => {
+    if (categoryModal.className.includes("d-none")) {
+      categoryModal.className = "";
+    } else {
+      categoryModal.className = "d-none";
+    }
+
+    categoryModalBtnClose.addEventListener("click", (e) => {
+      categoryModal.className = "d-none";
+    });
+  });
+</script>

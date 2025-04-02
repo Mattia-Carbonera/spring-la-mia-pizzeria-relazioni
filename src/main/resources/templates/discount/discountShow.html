@@ -30,6 +30,10 @@
           <span><strong>Data di Fine: </strong>[[*{finishDate}]]</span>
         </div>
       </div>
+
+      <form th:action="${discount.id} + @{/delete}" method="post">
+        <button type="submit">Elimina</button>
+      </form>
     </main>
   </body>
 </html>

@@ -33,17 +33,38 @@
 
         <div class="show-page-content">
           <div class="ingredients">
-            <span class="pizza-bold">Ingredienti: </span>
+            <span class="pizza-bold">Descrizione: </span>
             <p>[[${pizza.getDescription()}]]</p>
           </div>
           <div class="price">
             <span class="pizza-bold">[[${pizza.getPrice()}]]</span>
             <span class="pizza-bold"> €</span>
           </div>
-        </div>
 
-        <div class="discount-pizzas-container">
-          <h2>Promozioni attive:</h2>
+          <div class="ingredients-container">
+            <h3>Ingredienti della pizza:</h3>
+            <div
+              th:if="${pizza.ingredients.size() > 0}"
+              class="pizza-show-ingredients"
+            >
+              <ul>
+                <li th:each="ingredient : ${pizza.ingredients}">
+                  [[${ingredient}]]
+                </li>
+              </ul>
+            </div>
+
+            <div
+              th:unless="${pizza.ingredients.size() > 0}"
+              class="no-ingredients-container"
+            >
+              <span>Gli ingredienti non sono disponibili per questa pizza</span>
+            </div>
+          </div>
+
+          <div class="discount-pizzas-container">
+            <h2>Promozioni attive:</h2>
+          </div>
 
           <!-- CARD -->
           <th:block

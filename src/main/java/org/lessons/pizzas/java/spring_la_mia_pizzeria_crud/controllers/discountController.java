@@ -1,6 +1,7 @@
 package org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.controllers;
 
 import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.model.Discount;
+import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.model.Pizza;
 import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.repository.DiscountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -65,6 +68,16 @@ public class discountController {
         
         return new String("redirect:/menu");
     }
+
+    // Delete
+    @PostMapping("/{id}/delete")
+    public String delete(@PathVariable Integer id) {
+        Discount discountToDelete = discountRepository.findById(id).get();
+        discountRepository.delete(discountToDelete);
+        
+        return new String("redirect:/menu");
+    }
+    
     
     
     

@@ -3,7 +3,10 @@ package org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.controllers;
 import java.util.List;
 
 import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.model.Discount;
+import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.model.Ingredient;
 import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.model.Pizza;
+import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.repository.DiscountRepository;
+import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.repository.IngredientRepository;
 import org.lessons.pizzas.java.spring_la_mia_pizzeria_crud.repository.pizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +23,22 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-
-
 @Controller
 @RequestMapping("/")
 public class pizzasController {
 
+    private final DiscountRepository discountRepository;
+
+    @Autowired
+    private IngredientRepository ingredientRepository;
+
     @Autowired
     public pizzaRepository repository;
+
+    public pizzasController(IngredientRepository ingredientRepository, DiscountRepository discountRepository) {
+        this.ingredientRepository = ingredientRepository;
+        this.discountRepository = discountRepository;
+    }
 
     // homePage
     @GetMapping("/")
@@ -75,6 +86,8 @@ public class pizzasController {
     @GetMapping("/menu/create-pizza")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredients", ingredientRepository.findAll());
+
         return new String("create");
     }
 
@@ -83,6 +96,7 @@ public class pizzasController {
         if (bindingResult.hasErrors()) {
             return new String("create");
         }
+        model.addAttribute("ingredients", ingredientRepository.findAll());
 
         repository.save(formPizza);
         
@@ -93,6 +107,7 @@ public class pizzasController {
     @GetMapping("/menu/edit-pizza/{id}")
     public String edit(@PathVariable Integer id, Model model) {
         model.addAttribute("pizza", repository.findById(id).get());
+        model.addAttribute("ingredients", ingredientRepository.findAll());
         
         return new String("edit");
     }
@@ -111,7 +126,13 @@ public class pizzasController {
     // delete
     @PostMapping("/menu/delete/{id}")
     public String delete(@PathVariable Integer id) {
-        repository.deleteById(id);
+        Pizza pizzaToDelete = repository.findById(id).get();
+
+        for (Discount discount : pizzaToDelete.getDiscount()) {
+            discountRepository.delete(discount);
+        }
+
+        repository.delete(pizzaToDelete);
         
         return new String("redirect:/menu");
     }
